@@ -4,6 +4,28 @@ document.addEventListener("DOMContentLoaded", function () {
   mobileToggle.addEventListener("click", function () {
     mobileMenu.classList.toggle("active");
   });
+
+  const modal = document.querySelector(".modal");
+  const videoPlayer = document.querySelector("#video-player");
+  const videoButton = document.querySelector(".preview__video-button");
+  const closeButton = document.querySelector(".modal__close-button");
+
+  videoButton.addEventListener("click", function () {
+    modal.style.display = "block";
+    videoPlayer.src = "https://www.youtube.com/embed/8mJQbzoIIw8";
+  });
+
+  closeButton.addEventListener("click", function () {
+    modal.style.display = "none";
+    videoPlayer.src = "";
+  });
+
+  window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      videoPlayer.src = "";
+    }
+  });
 });
 
 window.addEventListener("scroll", function () {
